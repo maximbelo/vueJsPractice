@@ -16,15 +16,20 @@
       [v-cloak] {
         display: none;
       }
+
+      input {
+        margin: 10px;
+        display: block;
+      }
     </style>
   </head>
 
   <body>
     <div id="app" v-cloak>
-      {{greeting}}
-      <input type="text" v-model="greeting" @keyup.enter="greet" />
+      <login-form></login-form>
 
       <hr />
+
       <button @click="toggleBox">Toggle Box</button>
       <div v-if="isVisible" class="box"></div>
     </div>
@@ -48,6 +53,23 @@
           },
         },
       });
+
+      app.component("login-form", {
+        template: `
+        <div> 
+        <h1> {{title}} </h1>
+        <input type = 'email' />
+        <input type = 'password' />
+        </div>
+        `,
+
+        data() {
+          return {
+            title: "Login Form",
+          };
+        },
+      });
+
       app.mount("#app");
     </script>
   </body>
