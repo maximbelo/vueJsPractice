@@ -56,17 +56,25 @@
 
       app.component("login-form", {
         template: `
-        <div> 
-        <h1> {{title}} </h1>
-        <input type = 'email' />
-        <input type = 'password' />
-        </div>
+        <form @submit.prevent = 'handleSubmit'>
+          <h1> {{title}} </h1>
+          <input type = 'email' v-model = 'email' />
+          <input type = 'password' v-model = 'password' />
+          <button>Log in</button>
+        </form>
         `,
 
         data() {
           return {
             title: "Login Form",
+            email: "",
+            password: "",
           };
+        },
+        methods: {
+          handleSubmit() {
+            console.log(this.email, this.password);
+          },
         },
       });
 
