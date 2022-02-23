@@ -4,7 +4,7 @@ const app = Vue.createApp({
       counter: 0,
       name: "",
       lastName: "",
-      fullName: "",
+      // fullName: "",
     };
   },
   methods: {
@@ -33,30 +33,29 @@ const app = Vue.createApp({
     },
   },
   computed: {
-    // fullName() {
-    //   if (this.name === "") {
-    //     return "";
-    //   }
-    //   return `${this.name} Belo`;
-    // },
+    fullName() {
+      if (this.name === "" || this.lastName === "") {
+        return "";
+      }
+      return `${this.name} ${this.lastName}`;
+    },
   },
 
   watch: {
-    name(value) {
-      if (value === "") {
-        fullName = "";
-      } else {
-        this.fullName = `${value} ${this.lastName}`;
-      }
-    },
-
-    lastName(value) {
-      if (value === "") {
-        fullName = "";
-      } else {
-        this.fullName = `${this.name} ${value}`;
-      }
-    },
+    // name(value) {
+    //   if (value === "") {
+    //     fullName = "";
+    //   } else {
+    //     this.fullName = `${value} ${this.lastName}`;
+    //   }
+    // },
+    // lastName(value) {
+    //   if (value === "") {
+    //     fullName = "";
+    //   } else {
+    //     this.fullName = `${this.name} ${value}`;
+    //   }
+    // },
   },
 });
 
